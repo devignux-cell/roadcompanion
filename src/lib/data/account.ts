@@ -3,17 +3,15 @@ import { Account } from "@/types/account";
 export const DUMMY_ACCOUNT: Account = {
   id: "1",
   type: "Driver",
-  username: "test",
-  password_hash: "test",
+  username: "jona",
   display_name: "Jona",
   city: "Tampa",
-  profile_pic_url: "https://i.pravatar.cc/150?img=12",
-  bio: "Ybor City native. 5 ⭐ since 2021. Ask me anything about Tampa.",
-  custom_url: "/test/companion",
+  profile_pic_url: "/profile-pic.jpg",
+  bio: "Tampa local and 5 ⭐ driver. Happy to share great spots, food, and things to do around the city.",
+  custom_url: "/jona/companion",
   tips: {
-    cashapp: "$CarlosTampa",
-    venmo: "@CarlosTampa",
-    paypal: "CarlosTampaRides",
+    cashapp: "$JonaFerreira",
+    venmo: "@jonaferreira",
   },
   qr_code_url: "https://roamcompanion.app/ride/1",
   passenger_experience: null,
@@ -23,20 +21,16 @@ export const DUMMY_ACCOUNT: Account = {
 };
 
 // v1 — localStorage mock. Swap for Supabase auth in v2.
+// Password check happens server-side via checkDriverPassword() in lib/actions/login.ts
 
-export const login = (username: string, password: string): Account | null => {
-  if (
-    username === DUMMY_ACCOUNT.username &&
-    password === DUMMY_ACCOUNT.password_hash
-  ) {
-    localStorage.setItem("currentAccountId", DUMMY_ACCOUNT.id);
-    localStorage.setItem(
-      `account_${DUMMY_ACCOUNT.id}`,
-      JSON.stringify(DUMMY_ACCOUNT)
-    );
-    return DUMMY_ACCOUNT;
-  }
-  return null;
+export const login = (username: string): Account | null => {
+  if (username !== DUMMY_ACCOUNT.username) return null;
+  localStorage.setItem("currentAccountId", DUMMY_ACCOUNT.id);
+  localStorage.setItem(
+    `account_${DUMMY_ACCOUNT.id}`,
+    JSON.stringify(DUMMY_ACCOUNT)
+  );
+  return DUMMY_ACCOUNT;
 };
 
 export const logout = (): void => {

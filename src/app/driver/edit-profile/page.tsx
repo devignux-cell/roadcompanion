@@ -606,7 +606,7 @@ export default function DriverEditProfilePage() {
                 alt={displayName || "Profile"}
                 width={84}
                 height={84}
-                style={{ objectFit: "cover", width: "100%", height: "100%" }}
+                style={{ objectFit: "cover", objectPosition: "20% 28%", width: "100%", height: "100%" }}
                 unoptimized
               />
             ) : (

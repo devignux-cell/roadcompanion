@@ -4,7 +4,8 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import PageWrapper from "@/components/layout/PageWrapper";
 import { COLORS } from "@/lib/constants/colors";
-import { login, getCurrentAccount, logout } from "@/lib/data/account";
+import { getCurrentAccount, logout, login } from "@/lib/data/account";
+import { checkDriverPassword } from "@/lib/actions/login";
 
 export default function RootPage() {
   const router = useRouter();
@@ -21,18 +22,18 @@ export default function RootPage() {
     setIsLoggedIn(!!getCurrentAccount());
   }, []);
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     setError("");
-    const account = login(username.trim(), password);
-    if (account) {
+    const valid = await checkDriverPassword(username.trim(), password);
+    if (valid) {
+      login(username.trim());
       setIsLoggedIn(true);
-      setLoading(false);
     } else {
       setError("Invalid username or password.");
-      setLoading(false);
     }
+    setLoading(false);
   };
 
   const handleLogout = () => {

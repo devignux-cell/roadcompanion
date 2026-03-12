@@ -20,7 +20,6 @@ export interface Account {
   id: string;
   type: "Driver" | "Passenger";
   username: string;
-  password_hash: string;
   email?: string;
   display_name: string;
   city: string;
