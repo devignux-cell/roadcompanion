@@ -6,7 +6,6 @@ import Link from "next/link";
 import PageWrapper from "@/components/layout/PageWrapper";
 import { COLORS } from "@/lib/constants/colors";
 import { login } from "@/lib/data/account";
-import { checkDriverPassword } from "@/lib/actions/login";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -15,21 +14,18 @@ export default function LoginPage() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     setError("");
 
-    const valid = await checkDriverPassword(username.trim(), password);
-    if (valid) {
-      const account = login(username.trim());
-      if (account) {
-        router.push("/driver/edit-profile");
-        return;
-      }
+    const account = login(username.trim(), password);
+    if (account) {
+      router.push("/driver/edit-profile");
+    } else {
+      setError("Invalid username or password.");
+      setLoading(false);
     }
-    setError("Invalid username or password.");
-    setLoading(false);
   };
 
   const inputStyle: React.CSSProperties = {
