@@ -6,7 +6,10 @@ export async function checkDriverPassword(
   username: string,
   password: string
 ): Promise<boolean> {
-  const expectedPassword = process.env.DRIVER_PASS;
+  const expectedPassword = process.env.DRIVER_PASS?.trim();
   if (!expectedPassword) return false;
-  return username === DUMMY_ACCOUNT.username && password === expectedPassword;
+  return (
+    username.trim() === DUMMY_ACCOUNT.username &&
+    password.trim() === expectedPassword
+  );
 }
