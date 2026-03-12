@@ -1,0 +1,55 @@
+import type { TravelLink } from "@/types/events";
+import { COLORS } from "@/lib/constants/colors";
+
+export const TRAVEL_LINKS: TravelLink[] = [
+  {
+    id: "hotel",
+    label: "Book a Hotel",
+    desc: "Best rates via Booking.com",
+    icon: "🏨",
+    color: COLORS.teal,
+    url: "https://booking.com",
+    unsplashQuery: "luxury hotel pool resort florida",
+    imageUrl: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=60",
+  },
+  {
+    id: "car",
+    label: "Rent a Car",
+    desc: "Deals via DiscoverCars",
+    icon: "🚗",
+    color: COLORS.accent,
+    url: "https://discovercars.com",
+    unsplashQuery: "car rental road trip florida highway",
+    imageUrl: "https://images.unsplash.com/photo-1764089859664-30aa6919ef0b?q=80&w=1031&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+  {
+    id: "experiences",
+    label: "Tampa Experiences",
+    desc: "Tours & Activities via Viator",
+    icon: "🎟️",
+    color: COLORS.purple,
+    url: "https://viator.com",
+    unsplashQuery: "tampa tour experience activity outdoor",
+    imageUrl: "https://images.unsplash.com/photo-1564937183532-839087b287f2?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+  {
+    id: "flights",
+    label: "Flights",
+    desc: "Search via Expedia",
+    icon: "✈️",
+    color: COLORS.gold,
+    url: "https://expedia.com",
+    unsplashQuery: "airport flight departure travel",
+    imageUrl: "https://images.unsplash.com/photo-1569629743817-70d8db6c323b?q=80&w=1198&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+  {
+    id: "shop",
+    label: "Shop Tampa",
+    desc: "Amazon local picks",
+    icon: "🛍️",
+    color: "#FF87C3",
+    url: "https://amazon.com",
+    unsplashQuery: "shopping bag retail store colorful",
+    imageUrl: "https://images.unsplash.com/photo-1481437156560-3205f6a55735?q=80&w=1195&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+];
