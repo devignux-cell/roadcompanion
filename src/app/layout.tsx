@@ -19,6 +19,9 @@ const dmSans = DM_Sans({
 export const metadata: Metadata = {
   title: "Roam Companion · Your Ride, Upgraded",
   description: "Games, local spots, events and more — scan and go.",
+  other: {
+    "awin-site-verification": "Awin",
+  },
 };
 
 export default function RootLayout({
