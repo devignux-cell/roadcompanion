@@ -3,15 +3,15 @@ import AmbientOrbs from "./AmbientOrbs";
 
 interface PageWrapperProps {
   children: ReactNode;
+  fullWidth?: boolean;
 }
 
-export default function PageWrapper({ children }: PageWrapperProps) {
+export default function PageWrapper({ children, fullWidth = false }: PageWrapperProps) {
   return (
     <div
       style={{
-        background: "#0A0A0F",
+        background: "linear-gradient(to bottom, rgba(15, 15, 28, 0.7), rgba(5, 5, 12, .95))",
         minHeight: "100vh",
-        maxWidth: 430,
         margin: "0 auto",
         fontFamily: "'DM Sans', var(--font-dm-sans), sans-serif",
         color: "#F0EDE8",
@@ -20,7 +20,14 @@ export default function PageWrapper({ children }: PageWrapperProps) {
       }}
     >
       <AmbientOrbs />
-      <div style={{ position: "relative", zIndex: 1 }}>
+      <div
+        style={{
+          position: "relative",
+          zIndex: 1,
+          maxWidth: fullWidth ? undefined : 900,
+          margin: fullWidth ? undefined : "0 auto",
+        }}
+      >
         {children}
       </div>
     </div>

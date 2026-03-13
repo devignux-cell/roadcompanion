@@ -7,11 +7,13 @@ import PageWrapper from "@/components/layout/PageWrapper";
 import { COLORS } from "@/lib/constants/colors";
 import { REC_FILTERS } from "@/types/recommendations";
 import type { RecommendationItem, RecFilter } from "@/types/recommendations";
+import AiRecommendationsPanel from "./AiRecommendationsPanel";
 
 interface Props {
   items: RecommendationItem[];
   isLive: boolean;
   username: string;
+  driverProfileId: string | null;
 }
 
 function RecommendationCard({ item, index }: { item: RecommendationItem; index: number }) {
@@ -114,7 +116,7 @@ function RecommendationCard({ item, index }: { item: RecommendationItem; index: 
   return card;
 }
 
-export default function RecommendationsClient({ items, isLive, username }: Props) {
+export default function RecommendationsClient({ items, isLive, username, driverProfileId }: Props) {
   const [filter, setFilter] = useState<RecFilter>("All");
   const filtered = filter === "All" ? items : items.filter((item) => item.tags.includes(filter));
 
@@ -178,6 +180,9 @@ export default function RecommendationsClient({ items, isLive, username }: Props
             </div>
           ))}
         </div>
+
+        {/* AI panel — shown only when Supabase is configured */}
+        {driverProfileId && <AiRecommendationsPanel driverProfileId={driverProfileId} />}
 
         <div style={{ display: "flex", flexDirection: "column", gap: 12, padding: "0 16px" }}>
           {filtered.length === 0 ? (
