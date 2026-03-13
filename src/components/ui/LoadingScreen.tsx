@@ -7,6 +7,7 @@ import AmbientOrbs from '@/components/layout/AmbientOrbs'
 const CYCLE_MS = 4500
 
 export default function LoadingScreen() {
+  const [mountId] = useState(() => Date.now())
   const [animKey, setAnimKey] = useState(0)
 
   useEffect(() => {
@@ -31,7 +32,7 @@ export default function LoadingScreen() {
       <AmbientOrbs />
       <div key={animKey} style={{ position: 'relative', zIndex: 1, width: 260, height: 182 }}>
         <img
-          src={`/images/roam_car_build.svg?v=${animKey}`}
+          src={`/images/roam_car_build.svg?v=${mountId}-${animKey}`}
           alt="Roam Companion"
           width={260}
           height={182}

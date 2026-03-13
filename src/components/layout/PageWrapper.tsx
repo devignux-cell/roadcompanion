@@ -10,7 +10,7 @@ export default function PageWrapper({ children, fullWidth = false }: PageWrapper
   return (
     <div
       style={{
-        background: "linear-gradient(to bottom, rgba(15, 15, 28, 0.7), rgba(5, 5, 12, .95))",
+        background: "linear-gradient(to bottom, rgba(30, 30, 30, 0.7), rgba(5, 5, 12, .95))",
         minHeight: "100vh",
         margin: "0 auto",
         fontFamily: "'DM Sans', var(--font-dm-sans), sans-serif",
