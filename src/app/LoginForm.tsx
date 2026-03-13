@@ -9,7 +9,7 @@ import { createClient } from '@/lib/supabase/client'
 import LoadingScreen from '@/components/ui/LoadingScreen'
 
 const VIDEO_SRC = '/videos/roam-commercial.mp4'
-const MIN_LOADING_MS = 3000
+const MIN_LOADING_MS = 4500
 
 const inputStyle: React.CSSProperties = {
   background: 'rgba(19,19,26,0.85)',

@@ -579,8 +579,11 @@ curl -X POST http://localhost:3000/api/webhooks/stripe \
 **How to test (requires Stripe CLI):**
 1. Install [Stripe CLI](https://stripe.com/docs/stripe-cli)
 2. Run: `stripe listen --forward-to localhost:3000/api/webhooks/stripe`
-3. In another terminal: `stripe trigger customer.subscription.created`
-4. Edit the event in Stripe Dashboard or use `stripe fixtures` to include `metadata.supabase_user_id = YOUR_USER_UUID`
+3. In another terminal, trigger with metadata (replace with a real `user_id` from your `profiles` table):
+   ```bash
+   stripe trigger customer.subscription.created --override "subscription:metadata[supabase_user_id]=YOUR_PROFILE_UUID"
+   ```
+4. Ensure that `YOUR_PROFILE_UUID` exists in **Table Editor → profiles** (subscriptions has FK to profiles)
 
 **Expected outcome:**
 - In **Table Editor → subscriptions**: row created with `status = 'active'`, `plan_code = 'plus'`
