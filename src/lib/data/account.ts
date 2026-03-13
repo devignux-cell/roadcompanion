@@ -23,7 +23,7 @@ export const DUMMY_ACCOUNT: Account = {
 // v1 — localStorage mock. Swap for Supabase auth in v2.
 // Password check happens server-side via checkDriverPassword() in lib/actions/login.ts
 
-export const login = (username: string): Account | null => {
+export const login = (username: string, _password?: string): Account | null => {
   if (username !== DUMMY_ACCOUNT.username) return null;
   localStorage.setItem("currentAccountId", DUMMY_ACCOUNT.id);
   localStorage.setItem(
